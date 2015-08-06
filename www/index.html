@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="js/modal.js"></script>
+		<script src="js/jquery.iframe-transport.js"></script>
+		<script src="js/jquery.ui.widget.js"></script>
+		<script src="js/jquery.fileupload.js"></script>
+		
+		<link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/profile.css">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+		<!-- header row --> 
+       	<div class="row">
+       		<nav class="navbar navbar-default" style="padding-left:20px">
+			  <div class="container-fluid">
+			    <!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			      <a class="navbar-brand" href="#">Brand</a>
+			    </div>
+
+			    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      <ul class="nav navbar-nav">
+			        <li class="active"><a onClick='$("#register").modal();' href="#">Register</a></li>
+			        <li><a href="#">Link</a></li>
+			      </ul>
+			    </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+       	</div>
+       	<!--e:header-->
+	
+		<!--Body-->
+		<div class="row">
+			
+			<div class="container">
+				<!--Pin-->
+				<div class="col-lg-3 col-sm-4">
+		            <div class="card hovercard">
+		                <div class="cardheader" style="background: url('http://www.f-covers.com/cover/flowers-nature-6-facebook-cover-timeline-banner-for-fb.jpg')">
+
+		                </div>
+		                <div class="avatar">
+		                    <img alt="" src="http://lorempixel.com/100/100/people/9/">
+		                </div>
+		                <div class="info">
+		                    <div class="title">
+		                        <a target="_blank" href="http://scripteden.com/">Script Eden</a>
+		                    </div>
+		                    <div class="desc">Passionate designer</div>
+		                    <div class="desc">Curious developer</div>
+		                    <div class="desc">Tech geek</div>
+		                </div>
+		                <div class="bottom">
+		                    <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
+		                        <i class="fa fa-twitter"></i>
+		                    </a>
+		                    <a class="btn btn-danger btn-sm" rel="publisher"
+		                       href="https://plus.google.com/+ahmshahnuralam">
+		                        <i class="fa fa-google-plus"></i>
+		                    </a>
+		                    <a class="btn btn-primary btn-sm" rel="publisher"
+		                       href="https://plus.google.com/shahnuralam">
+		                        <i class="fa fa-facebook"></i>
+		                    </a>
+		                    <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
+		                        <i class="fa fa-behance"></i>
+		                    </a>
+		                </div>
+		            </div>
+	            </div>
+	            <!--e:pin-->
+			</div><!--e:container-->
+
+			
+
+		</div>
+		<!--e:body-->
+
+
+
+
+
+		<div id="welcome" class="modal fade">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">Welcome to MV Class 2005 Alumni!</h4>
+		      </div>
+		      <div class="modal-body">
+		        <p>Thanks for taking the time to visit our Alumni "Facebook". It's a simple website designed to give us a little overview of who will be joining us at the Reunion on 24 August 2015.</p>
+		        <p>Once you close this window, you will see a few familiar faces, and if they chose to share it, some contact info on how to get a hold of them.<p>
+		        <p>It will also show if they have RSVP'ed for the reunion event, or not. <br/> Please add yourself to our little Facebook, we'd like to know what you have been up to!</p>
+		        <p>To add yourself, please close this pop-up, and then click on the "Register" link at the top left of this page!</p>
+		        <p></p>
+		        <p>Thanks! </p>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+
+		<div id="register" class="modal fade">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">Register MV Class 2005 Alumni!</h4>
+		      </div>
+		      <div class="modal-body">
+		        <p>To register, please fill in the form below.
+		        <br/>
+		        You are required to upload a photo of yourself, or you cannot register. Please chose a photo that is not too large, for example, one you would use on Facebook.com</p>
+		        <p>In this registration, you will also specify whether you are attending the event by RSVP'ing. Please make sure that you also specify if you are bringin a guest or not when you RSVP.</p>
+		        <p>The registration will ask for a valid E-Mail address, please make sure that you specify your real E-Mail. We will use this to send you the final details about the event on the 24th. For example the Venue and times. We will not share this e-mail address publicly unless you tick the box that says "allow sharing".</p>
+		        <h4>Registration Form</h4>
+		        <hr/>
+		        <form>
+		        	<h4>Registration Details</h4>
+		        	<p>Every field in this section is required, please make sure that you fill in every field</p>
+		        	<div class="form-group">
+		        		<label for="email">E-Mail Address</label>
+		        		<input class="form-control" type="text" name="email" placeholder="JohnSmith@mycompany.com">
+		        	</div>
+		        	<div class="form-group">
+		        		<label for="fullName">Full Name</label>
+		        		<input class="form-control" type="text" name="fullName" placeholder="John Smith">
+		        	</div>
+		        	<div class="form-group">
+		        		<label for="currWork">Currently Doing</label>
+		        		<input class="form-control" type="text" name="currWork" placeholder="Working for xYz Company">
+		        	</div>
+		        	<div class="form-group">
+		        		<label for="message">Your Message</label>
+		        		<textarea class="form-control" placeholder="A message you would like to share with the class" name="message" ></textarea>
+		        	</div>
+		        	<h4>Photo</h4>
+		        	<p>In this section you will upload your required photo. Please make sure that you are happy with the photo as it displays here after you uploaded it. You will not have the chance to change it again.</p>
+					
+		        	<h4>Contact Details</h4>
+		        	<p>None of these fields are required, you can choose what you want to share with the class. Please remember, what you share here is publicly available</p>
+		        	<div class="form-group">
+		        		<label for="facebook">Facebook Link</label>
+		        		<input class="form-control" type="text" name="facebook" placeholder="http://facebook.com/john.smith">
+		        	</div>
+		        	<div class="form-group">
+		        		<label for="twitter">Twitter Username</label>
+		        		<input class="form-control" type="text" name="twitter" placeholder="john.smith">
+		        	</div>
+		        	<h4>Event Details</h4>
+		        	<p>No fields in this section is required, but please remember that you HAVE to RSVP in order to join the event on the 24th of August</p>
+		        	<div class="checkbox">
+					  <label>
+					    <input name="RSVP" type="checkbox" value="">
+					    I will attend the event on 24 August 2015
+					  </label>
+					</div>
+					<div class="checkbox">
+					  <label>
+					    <input name="guest" type="checkbox" value="">
+					    I will be bringing 1 Guest
+					  </label>
+					</div>
+					<div class="checkbox">
+					  <label>
+					    <input id="shareEmail" name="shareEmail" type="checkbox" value="">
+					    Feel free to share my E-Mail on this website
+					  </label>
+					</div>
+		        </form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+		
+		<button type="button" id="upload">Upload</button>
+
+		<div style="display:none">
+			<input type="file" id="uploadImage" name="profileImage"/>
+		</div>
+
+
+
+
+		<script>
+			$(document).ready(function(context){
+				if ( !localStorage.getItem("welcome") ) {
+					console.log("No Welcome Seen, showing welcome screen");
+					$("#welcome").modal("show");
+					localStorage.setItem("welcome", true);
+				}
+				else {
+					console.log("I found a Welcome Item in storage. Not displaying modal.");
+				}
+
+
+				$("#upload").click(function(e){
+					e.preventDefault();
+					$("#uploadImage").trigger("click");
+				})
+
+				$('#uploadImage').fileupload({
+					type: "POST",
+					url: 'https://ao9l8hc5j4.execute-api.eu-west-1.amazonaws.com/v1/processimages',
+			        dataType: 'json',
+			        start: function(e,data){
+			        	console.log(data);
+			        },
+			        done: function (e, data) {
+			            $.each(data.result.files, function (index, file) {
+			                $('<p/>').text(file.name).appendTo(document.body);
+			            });
+			        }
+			    });
+			})
+		</script>
+
+
+
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+    </body>
+</html>
