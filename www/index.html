@@ -39,14 +39,14 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 			      </button>
-			      <a class="navbar-brand" href="#">Brand</a>
+			      <a class="navbar-brand" href="#">MV Class 2005</a>
 			    </div>
 
 			    <!-- Collect the nav links, forms, and other content for toggling -->
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      <ul class="nav navbar-nav">
 			        <li class="active"><a onClick='$("#register").modal();' href="#">Register</a></li>
-			        <li><a href="#">Link</a></li>
+			        
 			      </ul>
 			    </div><!-- /.navbar-collapse -->
 			  </div><!-- /.container-fluid -->
@@ -57,8 +57,9 @@
 		<!--Body-->
 		<div class="row">
 			
-			<div class="container">
-				<!--Pin-->
+			<div id="pinContainer" class="container">
+				<div class="alert alert-info" style="text-align: center"><img src="img/pinloader.gif"/> <br/> Please wait while we load the Class Pins</div>
+				<!--Pin
 				<div class="col-lg-3 col-sm-4">
 		            <div class="card hovercard">
 		                <div class="cardheader" style="background: url('http://www.f-covers.com/cover/flowers-nature-6-facebook-cover-timeline-banner-for-fb.jpg')">
@@ -93,7 +94,7 @@
 		                </div>
 		            </div>
 	            </div>
-	            <!--e:pin-->
+	            e:pin-->
 			</div><!--e:container-->
 
 			
@@ -163,7 +164,18 @@
 		        		<textarea class="form-control" placeholder="A message you would like to share with the class" name="message" ></textarea>
 		        	</div>
 		        	<h4>Photo</h4>
-		        	<p>In this section you will upload your required photo. Please make sure that you are happy with the photo as it displays here after you uploaded it. You will not have the chance to change it again.</p>
+		        	<p>In this section you will upload your required photo. Please make sure that you are happy with the photo as it displays here! After you have uploaded it, you will not have the chance to change it again.</p>
+		        	<div class="row">
+		        		<div class="col-xs-6 col-sm-4" style="text-align: center"><img id="profileImgDisp" class="img-responsive img-circle" src="img/placeholder.png" /></div>
+						<div class="col-xs-6 col-sm-6" style="text-align: center; vertical-align: middle"><button class="btn btn-info btn-small" type="button" id="upload">Select Photo</button>
+							
+							<div id="imgAlert" class="alert alert-warning hidden" style="margin-top:5px">
+								WARNING!
+							</div>					
+	
+						</div>
+		        	</div>
+		        	
 					
 		        	<h4>Contact Details</h4>
 		        	<p>None of these fields are required, you can choose what you want to share with the class. Please remember, what you share here is publicly available</p>
@@ -179,25 +191,28 @@
 		        	<p>No fields in this section is required, but please remember that you HAVE to RSVP in order to join the event on the 24th of August</p>
 		        	<div class="checkbox">
 					  <label>
-					    <input name="RSVP" type="checkbox" value="">
+					    <input name="RSVP" type="checkbox" value="1">
 					    I will attend the event on 24 August 2015
 					  </label>
 					</div>
 					<div class="checkbox">
 					  <label>
-					    <input name="guest" type="checkbox" value="">
+					    <input name="guest" type="checkbox" value="1">
 					    I will be bringing 1 Guest
 					  </label>
 					</div>
 					<div class="checkbox">
 					  <label>
-					    <input id="shareEmail" name="shareEmail" type="checkbox" value="">
+					    <input id="shareEmail" name="shareEmail" type="checkbox" value="1">
 					    Feel free to share my E-Mail on this website
 					  </label>
 					</div>
 		        </form>
 		      </div>
 		      <div class="modal-footer">
+		      	<div style="padding:2px; text-align: center; display:none" class="alert alert-warning col-xs-6 col-sm-6 regMsg">Please wait while we process the registration</div>
+		      	<img src="img/preloader.gif" style="margin: 0px 5px 0px 5px; display:none" class="regMsg"/>
+		      	<button id="registerAlumni" type="button" class="btn btn-info">Register</button>
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		      </div>
 		    </div><!-- /.modal-content -->
@@ -205,7 +220,7 @@
 		</div><!-- /.modal -->
 
 		
-		<button type="button" id="upload">Upload</button>
+		
 
 		<div style="display:none">
 			<input type="file" id="uploadImage" name="profileImage"/>
@@ -216,6 +231,103 @@
 
 		<script>
 			$(document).ready(function(context){
+
+				$.fn.serializeObject = function()
+				{
+				    var o = {};
+				    var a = this.serializeArray();
+				    $.each(a, function() {
+				        if (o[this.name] !== undefined) {
+				            if (!o[this.name].push) {
+				                o[this.name] = [o[this.name]];
+				            }
+				            o[this.name].push(this.value || '');
+				        } else {
+				            o[this.name] = this.value || '';
+				        }
+				    });
+				    return o;
+				};
+
+				var genPin = function(curr){
+					//var RSVP = (curr.RSVP.BOOL = true ) ? ""
+					var pin = '<!--Pin-->  \
+					<div class="col-lg-3 col-sm-4"> \
+			            <div class="card hovercard"> \
+			                <div class="cardheader" style="background: url(\'http://www.f-covers.com/cover/flowers-nature-6-facebook-cover-timeline-banner-for-fb.jpg\')"> \
+			                </div> \
+			                <div class="avatar"> \
+			                    <img alt="" src="https://s3-eu-west-1.amazonaws.com/coeus/mvpins2005/'+curr.imageName.S+'"> \
+			                </div> \
+			                <div class="info"> \
+			                    <div class="title"> \
+			                        <a target="_blank" href="#">'+curr.fullName.S+'</a> \
+			                    </div> \
+			                    <div class="desc">'+curr.currWork.S+'</div> \
+			                    <hr style="margin:2px"/> \
+			                    <div class="desc">'+curr.message.S+'</div> \
+			                    <hr style="margin:2px"/> \
+			                    <div class="desc">I will ' +  ( (curr.RSVP.BOOL == true) ? "" : "NOT") + ' be attending!</div> \
+			                </div> \
+			                <div class="bottom">'
+			        if( (typeof curr.twitter) !== "undefined") {
+			        	var pin = pin + '<a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/'+curr.twitter.S+'"> \
+		                        <i class="fa fa-twitter"></i> \
+		                    </a>'
+			        }
+
+			        if( (typeof curr.facebook) !== "undefined"){
+			        	var pin = pin + '<a class="btn btn-danger btn-sm" rel="publisher" \
+		                       href="https://facebook.com/'+curr.facebook.S+'"> \
+		                        <i class="fa fa-facebook"></i> \
+		                    </a>'
+			        }
+
+			        if(curr.shareEmail.BOOL == true){
+			        	var pin = pin + '<a class="btn btn-primary btn-sm" rel="publisher" \
+		                       href="mailto:'+curr.email.S+'"> \
+		                        <i class="fa fa-envelope-o"></i> \
+		                    </a>'
+			        }
+
+			        return pin;
+				}
+
+				$.get('https://ao9l8hc5j4.execute-api.eu-west-1.amazonaws.com/v1/alumni',function(data){
+					//console.log(data);
+					$("#pinContainer").html('');
+					for (item in data.Items){
+						var curr = data.Items[item];
+						//console.log(curr.imageName.S);
+						$("#pinContainer").append(genPin(curr));
+					}
+				})
+
+				function pollImage(url){
+					console.log("polling image");
+					$.ajax({
+				    	url: url,
+				    	type: 'GET'
+					}).done(function(data,status){
+						console.log(status);
+						$(".regMsg").hide();
+						$("#register").modal("hide");
+						location.reload();
+					}).fail(function(data,status){
+						console.log(status);
+						setTimeout(pollImage(url),5000);
+					})
+					
+				}
+				var registerUser = function(data){
+					console.log("File Uploaded");
+					console.log(data);
+					$.post('https://ao9l8hc5j4.execute-api.eu-west-1.amazonaws.com/v1/register', JSON.stringify(data), function(ret){
+						
+						
+					}).done(pollImage("https://s3-eu-west-1.amazonaws.com/coeus/mvpins2005/"+data.imageName))
+				}
+
 				if ( !localStorage.getItem("welcome") ) {
 					console.log("No Welcome Seen, showing welcome screen");
 					$("#welcome").modal("show");
@@ -231,6 +343,117 @@
 					$("#uploadImage").trigger("click");
 				})
 
+				$("#uploadImage").change(function(e){
+					var image = this.files[0];
+					console.log(image);
+					if( image.size > 2097152 ){
+						$("#imgAlert").html("Image File Size Too Big.")
+						$("#imgAlert").removeClass("hidden");
+					}else {
+						$("#imgAlert").addClass("hidden");
+						var reader = new FileReader();
+						reader.onload = function(event) {
+					    	//console.log(event);
+					    	$("#profileImgDisp").attr("src",event.target.result);
+					  	}
+					  	reader.readAsDataURL(image);
+					  	globalImage=image;
+					}
+				 
+				})
+
+				$("#registerAlumni").click(function(e){
+					e.preventDefault();
+					$("div.regMsg").removeClass("alert-danger").addClass("alert-warning");
+					$("div.regMsg").html('Working. Page will reload on complete. This may take a while.');
+					$(".regMsg").show();
+					form = $("#register form").serializeObject();
+					form.imageName = "mv_" + Date.now();
+					console.log(form);
+					var hasError = 0
+					if(form.email == ""){
+						$("input[name=email]").parent("div").addClass("has-error");
+						var hasError = 1;
+					}else{
+						$("input[name=email]").parent("div").addClass("has-success");
+					}
+
+					if(form.currWork == ""){
+						$("input[name=currWork]").parent("div").addClass("has-error");
+						var hasError = 1;
+					}else{
+						$("input[name=currWork]").parent("div").addClass("has-success");
+					}
+
+					if(form.fullName == ""){
+						$("input[name=fullName]").parent("div").addClass("has-error");
+						var hasError = 1;
+					}else{
+						$("input[name=fullName]").parent("div").addClass("has-success");
+					}
+
+					if(form.message == ""){
+						$("textarea[name=message]").parent("div").addClass("has-error");
+						var hasError = 1;
+					}else{
+						$("textarea[name=message]").parent("div").addClass("has-success");
+					}
+ 
+					if((typeof globalImage) === 'undefined'){
+						var hasError = 1;
+						var missingImg = 1;
+					}
+
+					if(hasError == 1){
+						console.log("Something has an error: " + missingImg);
+						$("img.regMsg").hide();
+						$("div.regMsg").removeClass("alert-warning").addClass("alert-danger");
+						$("div.regMsg").html((missingImg == 1) ? 'You must upload a profile image' : 'Please fix the Items in Red and Try again');
+						return;
+					}
+					
+
+					//Assuming My If Statements Pass.
+					var params = {imageName: form.imageName, prefix: 'mvpins2005', type: globalImage.type }
+					$.post('https://ao9l8hc5j4.execute-api.eu-west-1.amazonaws.com/v1/getimageurl', JSON.stringify(params), function(url){
+						console.log("Attempting to upload " + form.imageName +" to: " + url);
+						 
+						$.ajax({
+						    method: "PUT",
+						    headers: {"Content-Type": globalImage.type},
+						    processData: false,
+						    url: url,
+						    data: globalImage
+						}).done(registerUser(form));
+					    
+					})
+				})
+/*
+				$("#uploadImage").change(function(e){
+					var image = this.files;
+					var image = image[0];
+					console.log(image);
+					//if (image.size = )
+					var params = {imageName: image.name, prefix: 'mvpins2005'}
+					$.post('https://ao9l8hc5j4.execute-api.eu-west-1.amazonaws.com/v1/getimageurl', JSON.stringify(params), function(url){
+						console.log("Attempting to upload " + image.name +" to: " + url);
+						var reader = new FileReader();
+						reader.onload = function(event) {
+							console.log(event);
+						  }
+						$.ajax({
+						    method: "PUT",
+						    headers: {"Content-Type": "multipart/form-data"},
+						    processData: false,
+						    url: url,
+						    data: image
+						})
+						
+					} )
+				})
+
+*/
+				/*
 				$('#uploadImage').fileupload({
 					type: "POST",
 					url: 'https://ao9l8hc5j4.execute-api.eu-west-1.amazonaws.com/v1/processimages',
@@ -244,6 +467,7 @@
 			            });
 			        }
 			    });
+				*/
 			})
 		</script>
 
